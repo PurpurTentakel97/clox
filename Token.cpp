@@ -23,4 +23,13 @@ std::size_t Token::line() const
     return m_line;
 }
 
+std::string Token::string_from_literal() const
+{
+    if (std::holds_alternative<std::monostate>(m_literal))
+    {
+        return "std::monostate";
+    }
+    std::unreachable();
+}
+
 

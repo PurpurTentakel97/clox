@@ -19,13 +19,13 @@ void error (int const line, std::string const& message)
 
 void run(std::string const& source)
 {
-    auto lexer = Lexer(source);
+    /*auto lexer = Lexer(source);
     auto const tokens = lexer.scan_tokens();
 
     for (auto const& token : tokens)
     {
         std::cout << token << '\n';
-    }
+    }*/
 }
 
 void run_file(std::filesystem::path const& path)
