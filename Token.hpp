@@ -11,13 +11,14 @@
 class Token final
 {
 public:
-    using literal_ty = std::variant<std::monostate>;
+    using literal_ty = std::variant<std::monostate, std::string, double>;
 
 private:
     TokenType m_type;
     std::string m_lexeme;
     literal_ty m_literal;
     std::size_t m_line;
+
 
 public:
     Token(TokenType type, std::string lexeme, literal_ty liertal, std::size_t line);

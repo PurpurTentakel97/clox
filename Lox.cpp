@@ -1,31 +1,21 @@
-#include <iostream>
+
 #include <filesystem>
 #include <fstream>
 #include <sstream>
 #include <print>
+#include "Lexer.hpp"
+#include "Error.hpp"
 
-static bool had_error = false;
-
-void report(int const line, std::string const& where, std::string const& message)
-{
-    std::println(std::cerr, "[line {}] Error{}: {}", line, where, message);
-    had_error = true;
-}
-
-void error (int const line, std::string const& message)
-{
-    report(line, "", message);
-}
 
 void run(std::string const& source)
 {
-    /*auto lexer = Lexer(source);
+    auto lexer = Lexer(source);
     auto const tokens = lexer.scan_tokens();
 
     for (auto const& token : tokens)
     {
         std::cout << token << '\n';
-    }*/
+    }
 }
 
 void run_file(std::filesystem::path const& path)
@@ -45,7 +35,7 @@ void run_file(std::filesystem::path const& path)
     }
 
     run(std::move(stream).str());
-    if (had_error) { std::exit(65); }
+    if (had_error()) { std::exit(65); }
 }
 
 void run_prompt()
@@ -62,7 +52,7 @@ void run_prompt()
         }();
 
         run(line);
-        had_error = false;
+        reset_error();
     }
 }
 
