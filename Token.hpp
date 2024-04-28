@@ -1,12 +1,11 @@
 #pragma once
 
 #include <format>
-
-#include "TokenType.hpp"
 #include <string>
 #include <variant>
 #include <iterator>
 #include <ostream>
+#include "TokenType.hpp"
 
 class Token final
 {

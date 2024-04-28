@@ -126,7 +126,11 @@ void Lexer::scan_token()
         break;
 
     default:
-        if (std::isdigit(c))
+        if (c < 0)
+        {
+            error(m_line, std::string("Unexpected character: ") + c);
+        }
+        else if (std::isdigit(c))
         {
             num();
         }
