@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <format>
 
 static bool s_had_error = false;
 
@@ -21,7 +22,7 @@ inline void reset_error()
 
 inline void report(std::size_t const line, std::string const& where, std::string const& message)
 {
-    std::println(std::cerr, "[line {}] Error{}: {}", line, where, message);
+    std::cerr << std::format("[line {}] Error{}: {}", line, where, message);
     s_had_error = true;
 }
 

@@ -4,6 +4,7 @@
 #include <filesystem>
 #include <fstream>
 #include <sstream>
+#include <format>
 
 using config_ty = std::vector<std::pair<std::string_view, std::vector<std::pair<std::string_view, std::string_view>>>>;
 static config_ty const s_config{
@@ -13,11 +14,10 @@ static config_ty const s_config{
     {"Unary", {{"Token", "operator_"}, {"expr_ty", "right"}}},
 };
 
-static constexpr auto s_header_class = R"(class {0} final : public Expression {{
-private:
+static constexpr auto s_header_class = R"(struct {0} final : public Expression {{
 {1}
-public:
-    {0}({2});
+
+    explicit {0}({2});
 }};
 
 
@@ -34,8 +34,7 @@ static constexpr auto s_header_top = R"(#pragma once
 #include "Token.hpp"
 #include <memory>
 
-class Expression {
-public:
+struct Expression {
     using expr_ty = std::unique_ptr<Expression>;
     virtual ~Expression() = default;
 };

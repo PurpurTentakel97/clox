@@ -18,12 +18,12 @@ add_executable(cpplox
                TokenType.hpp
                Token.hpp
                Lexer.hpp
+               Expression.hpp
+               Helper.hpp
+               Error.hpp
                Lox.cpp
                Token.cpp
                Lexer.cpp
-               Error.hpp
-               Helper.hpp
-               ${CMAKE_CURRENT_LIST_DIR}/Expression.hpp
-               ${CMAKE_CURRENT_LIST_DIR}/Expression.cpp
+               Expression.cpp
 )
 
